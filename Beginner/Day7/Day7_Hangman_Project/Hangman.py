@@ -1,6 +1,9 @@
 import random
 from Hangman_art import logo, stages
 from Hangman_words import word_list
+import os
+def clear():
+	os.system("clear")
 
 chosen_word = word_list[random.randint(0, len(word_list) - 1)]
 display_list = []
@@ -21,6 +24,8 @@ while(game_over != True):
 	print(f"You have {lives} lives left!\n")
 	# print(f"{chosen_word}")
 	guess = input(f"Guess a letter: ").lower()
+	clear()
+	print(f"{logo}\n")
 	guess_list.append(guess)
 	if (guess == "stop"):
 		break
@@ -28,12 +33,14 @@ while(game_over != True):
 		letter = chosen_word[position]
 		if guess == letter:
 			display_list[position] = letter
+			print(f"Correct!\n")
 			
 	print(f"Current situation: {display_list}\n")
 	print(f"Letters guessed {guess_list}\n")
 	
 	if guess not in chosen_word:
 		lives -= 1
+		print(f"The letter is not in the word..")
 		print(f"{stages[lives]}")
 		if lives == 0:
 			game_over = True
