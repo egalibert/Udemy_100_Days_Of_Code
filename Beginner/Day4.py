@@ -18,7 +18,7 @@ else:
 
 import string
 import random
-names = names_string.split(", ")
+names = string.split(", ")
 
 import random
 
