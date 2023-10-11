@@ -1,25 +1,48 @@
-line1 = ["⬜️","️⬜️","️⬜️"]
-line2 = ["⬜️","⬜️","️⬜️"]
-line3 = ["⬜️️","⬜️️","⬜️️"]
-map = [line1, line2, line3]
-print("Hiding your treasure! X marks the spot.")
-# position = input() # Where do you want to put the treasure?
-position = input() # Where do you want to put the treasure?
-# 🚨 Don't change the code above 👆
-# Write your code below this row 👇
+# EX1
 
-letter = position[0]
+# You are going to write a program that calculates the average student height from a List of heights.
 
-if letter == "A":
-	index = 0
-elif letter == "B":
-	index = 1
-elif letter == "C":
-	index = 2
+# e.g. student_heights = [180, 124, 165, 173, 189, 169, 146]
 
-number_index = int(position[1]) - 1
-map[number_index][index] = 'X'
+student_heights = input().split()
+for n in range(0, len(student_heights)):
+  student_heights[n] = int(student_heights[n])
 
-# Write your code above this row 👆
-# 🚨 Don't change the code below 👇
-print(f"{line1}\n{line2}\n{line3}")
+total = 0
+
+for i in range(0, len(student_heights)):
+  total += student_heights[i]
+
+print(f"total height = {total}")
+print(f"number of students = {len(student_heights)}")
+print(f"average height = {round(total / len(student_heights))}")
+
+# EX2
+
+# You are going to write a program that calculates the highest score from a List of scores.
+
+# e.g. student_scores = [78, 65, 89, 86, 55, 91, 64, 89]
+
+student_scores = input().split()
+for n in range(0, len(student_scores)):
+  student_scores[n] = int(student_scores[n])
+
+best = 0
+for i in range(0, len(student_scores)):
+  if student_scores[i] > best:
+    best = student_scores[i]
+
+print(f"The highest score in the class is: {best}")
+
+# EX3
+
+# You are going to write a program that calculates the sum of all the even numbers from 1 to X.
+# If X is 100 then the first even number would be 2 and the last one is 100:
+
+target = int(input()) # Enter a number between 0 and 1000
+total = 0
+
+for number in range(0, target + 1, 2):
+  total += number
+
+print(f"{total}")
