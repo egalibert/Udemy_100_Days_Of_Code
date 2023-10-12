@@ -16,16 +16,17 @@ game_over = False
 for i in range(word_legth):	
 	display_list.append("_")
 	
-print(f"{logo}\n")
+# print(f"{logo}\n")
 
 print(f"Welcome to Hangman game. You have 6 lives to guess the mystery word!\n")
 
 while(game_over != True):
+	print(f"{logo}\n")
 	print(f"You have {lives} lives left!\n")
+	print(f"{stages[lives]}")
 	# print(f"{chosen_word}")
 	guess = input(f"Guess a letter: ").lower()
 	clear()
-	print(f"{logo}\n")
 	guess_list.append(guess)
 	if (guess == "stop"):
 		break
@@ -41,9 +42,10 @@ while(game_over != True):
 	if guess not in chosen_word:
 		lives -= 1
 		print(f"The letter is not in the word..")
-		print(f"{stages[lives]}")
+		# print(f"{stages[lives]}")
 		if lives == 0:
 			game_over = True
+			print(f"{logo}\n")
 			print(f"You're out of lives, you lose. GG.")
 			print(f"The mystery word was {chosen_word}")
 

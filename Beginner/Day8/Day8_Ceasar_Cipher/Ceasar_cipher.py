@@ -1,5 +1,10 @@
 from art import logo
 
+alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", " ", "!", "?", "@", ",", "."]
+print(logo)
+print(f"Welcome to Cesar Cipher!")
+
 def caesar(direction, text, shift):
 	cipher_text = ""
 	if direction == "decode":
@@ -16,13 +21,8 @@ def caesar(direction, text, shift):
 		
 	print(f"Here's the {direction}d result: {cipher_text}")
 
-alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, " ", "!", "?", "@", ",", "."]
-answer = True
-print(logo)
-print(f"Welcome to Cesar Cipher!")
-
-while(answer):
+should_continue = True
+while should_continue:
 	direction = input("Type 'encode' to encrypt, type 'decode' to decrypt, type 'exit' to exit:\n")
 	if direction == "exit":
 		break
@@ -32,8 +32,8 @@ while(answer):
 	text = input("Type your message:\n").lower()
 	shift = int(input("Type the shift number:\n"))
 	caesar(direction, text, shift)
-	go = input("Do you wish to continue? type 'yes' or 'no: ").lower()
-	if go == "yes":
-		answer == True
-	else:
-		answer == False
+	
+	result = input("Do you wish to continue? type 'yes' or 'no: ")
+	if result == "no":
+		should_continue = False
+		print(f"Goodbye!")
