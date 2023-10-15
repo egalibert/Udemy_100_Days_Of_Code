@@ -9,6 +9,7 @@
 # And it will use this information to work out if the year is a leap year and decide the number of days in the month, then return that as the output, e.g.:
 
 def is_leap(year):
+	"""Checks if year is a leap year. Returns True or False"""
 	if year % 4 == 0:
 		if year % 100 == 0:
 			if year % 400 == 0:
@@ -30,3 +31,4 @@ year = int(input()) # Enter a year
 month = int(input()) # Enter a month
 days = days_in_month(year, month)
 print(days)
+
