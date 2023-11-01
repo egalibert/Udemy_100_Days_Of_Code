@@ -10,10 +10,11 @@ class Ball(Turtle):
 		self.goto(0, 0)
 		self.x_move = MOVE_SPEED
 		self.y_move = MOVE_SPEED
+		self.multiplier = 1
 
 	def move_ball(self):
-		new_x = self.xcor() + self.x_move
-		new_y = self.ycor() + self.y_move
+		new_x = self.xcor() + self.x_move 
+		new_y = self.ycor() + self.y_move 
 		self.goto(new_x, new_y)
 
 
@@ -26,3 +27,6 @@ class Ball(Turtle):
 	def reset_position(self):
 		self.goto(0, 0)
 		self.bounce_x()
+
+	# def increase_multiplier(self):
+	# 	self.multiplier += 1
