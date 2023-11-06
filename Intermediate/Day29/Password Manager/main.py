@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import messagebox
 from random import choice, randint, shuffle
 import pyperclip
+import json
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 def password_generator():
 	letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
@@ -20,22 +21,54 @@ def password_generator():
 	password_entry.insert(0, password)
 	pyperclip.copy(password)
 	# print(f"Your password is: {password}")
+# ---------------------------- SEARCH DATA ------------------------------- #
+def search():
+	website = website_entry.get()
+	try:
+		with open("data.json") as data_file:
+			data = json.load(data_file)
+	except FileNotFoundError:
+		messagebox.showinfo(title="Error", message= "No Data File Found!")
+	else:
+		if website in data:
+			email = data[website]["email"]
+			password = data[website]["password"]
+			messagebox.showinfo(title=website, message=f"Email: {email}\nPassword: {password}")
+		else:
+			messagebox.showinfo(title="Error", message=f"No details for {website} exists.")
 
+	
 # ---------------------------- SAVE PASSWORD ------------------------------- #
+
 def save():
 	site_text = website_entry.get()
 	mail_text = email_entry.get()
 	pass_text = password_entry.get()
+	new_data = {
+		site_text: {
+			"email": mail_text,
+			"password": pass_text
+		}
+	}
 
 	if len(site_text) == 0 or len(pass_text) == 0:
 		messagebox.showinfo(title="Oops", message= "Please don't leave any fields empty!")
 	else:
-		is_ok = messagebox.askokcancel(title=site_text, message=f"these are the details entered: \nEmail: {mail_text} \nPassword: {pass_text} \n Is it okay to save?")
+		try:
+			with open("data.json", "r") as file:
+				# Reading old data
+				data = json.load(file)
+		except FileNotFoundError:
+			with open("data.json", "w") as file:	
+				json.dump(new_data, file, indent=4)
+		else:
+			# Updateing old data with new data
+			data.update(new_data)
 
-		if is_ok:
-			with open("data.txt", "a") as file:
-				file.write(f"{site_text} | {mail_text} | {pass_text}\n")
-			file.close()
+			with open("data.json", "w") as file:
+				# Saving the updated data
+				json.dump(data, file, indent=4)
+		finally:
 			website_entry.delete(0, END)
 			password_entry.delete(0, END)
 
@@ -65,8 +98,8 @@ password.grid(column=0, row=3)
 #-------
 #Entries
 
-website_entry = Entry(width=38)
-website_entry.grid(column=1, row=1, columnspan=2)
+website_entry = Entry(width=21)
+website_entry.grid(column=1, row=1)
 website_entry.focus()
 
 email_entry = Entry(width=38)
@@ -84,6 +117,9 @@ gen_button.grid(column=2, row=3)
 
 add_button = Button(width= 36, text="Add", command=save)
 add_button.grid(column=1, row=4, columnspan=2)
+
+search_button = Button(text="Search",width=13, command=search)
+search_button.grid(column=2, row=1)
 
 #-------
 
