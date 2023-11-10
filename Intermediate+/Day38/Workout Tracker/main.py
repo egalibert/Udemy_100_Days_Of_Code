@@ -5,7 +5,7 @@ from requests.auth import HTTPBasicAuth
 
 AUTHENTICATION = HTTPBasicAuth('koira', 'kissa123')
 APP_ID = "c5180bb6"
-APP_KEY = "9c76fcf1aa976e515bd8cb2ed2864ec9"
+APP_KEY = ""
 
 os.environ["APP_ID"] = APP_ID
 
