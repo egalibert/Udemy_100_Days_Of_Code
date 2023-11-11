@@ -1,7 +1,7 @@
 from flight_data import FlightData
 from flight_search import FlightSearch
 from data_manager import DataManager
-from notification_manager import NotificationManager
+# from notification_manager import NotificationManager
 from datetime import datetime, timedelta
 
 ORIGIN_CITY_IATA = "HEL"
