@@ -4,6 +4,10 @@ from datetime import datetime
 import smtplib
 import lxml
 
+#Not doing email part and sending myself spam :D
+
+
+#Scraping Amazon for product price
 URL = "https://www.amazon.com/dp/B075CYMYK6?ref_=cm_sw_r_cp_ud_ct_FM9M699VKHTT47YD50Q6&th=1"
 USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"
 ACCEPT_LANGUAGE = "fi-FI,fi;q=0.9,en-US;q=0.8,en;q=0.7"
