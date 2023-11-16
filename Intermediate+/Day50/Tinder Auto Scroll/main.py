@@ -5,7 +5,7 @@ from selenium.common.exceptions import ElementClickInterceptedException, NoSuchE
 import time
 
 FB_EMAIL = "extream-man@hotmail.com"
-FB_PASS = "SoGiVMA5"
+FB_PASS = ""
 
 phone_xpath = '//*[@id="s2018968691"]/main/div/div/div[1]/div/div/div[2]/div[2]/span/div[3]/button'
 FB_XPATH = '//*[@id="s2018968691"]/main/div/div/div[1]/div/div/div[2]/div[2]/span/div[2]/button'
