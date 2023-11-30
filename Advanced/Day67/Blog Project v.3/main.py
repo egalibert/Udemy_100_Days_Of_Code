@@ -1,9 +1,9 @@
 from flask import Flask, render_template, redirect, url_for, request
 from flask_bootstrap import Bootstrap5
 from flask_sqlalchemy import SQLAlchemy
-# from flask_wtf import FlaskForm
-# from wtforms import StringField, SubmitField
-# from wtforms.validators import DataRequired, URL
+from flask_wtf import FlaskForm
+from wtforms import StringField, SubmitField
+from wtforms.validators import DataRequired, URL
 from flask_ckeditor import CKEditor, CKEditorField
 from datetime import date
 
@@ -53,9 +53,20 @@ def show_post(post_id):
 def add_new_post():
     return render_template("make-post.html")
 
-# TODO: edit_post() to change an existing blog post
+# edit_post() to change an existing blog post
+@app.route("/edit-post/<int:post_id>", methods=["GET", "POST"])
+def edit_post(post_id):
+    post = db.get_or_404(BlogPost, post_id)
+    edit_form = ""
+    return render_template("make-post.html", form=edit_form, is_edit=True)
 
-# TODO: delete_post() to remove a blog post from the database
+# delete_post() to remove a blog post from the database
+@app.route("/delete/<int:post_id>")
+def delete_post(post_id):
+    post_to_delete = db.get_or_404(BlogPost, post_id)
+    db.session.delete(post_to_delete)
+    db.session.commit()
+    return redirect(url_for('get_all_posts'))
 
 # Below is the code from previous lessons. No changes needed.
 @app.route("/about")
