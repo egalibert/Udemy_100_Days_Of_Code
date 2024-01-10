@@ -90,22 +90,22 @@ international_releases.tail()
 
 plt.figure(figsize=(8,4), dpi=200)
  
-with sns.axes_style("darkgrid"):
-	ax = sns.scatterplot(data=data_clean, 
-					x='Release_Date', 
-					y='USD_Production_Budget',
-					hue='USD_Worldwide_Gross',
-					size='USD_Worldwide_Gross',)
+# with sns.axes_style("darkgrid"):
+# 	ax = sns.scatterplot(data=data_clean, 
+# 					x='Release_Date', 
+# 					y='USD_Production_Budget',
+# 					hue='USD_Worldwide_Gross',
+# 					size='USD_Worldwide_Gross',)
 
-	ax.set(ylim=(0, 450000000),
-		xlim=(data_clean.Release_Date.min(), data_clean.Release_Date.max()),
-		xlabel='Year',
-		ylabel='Budget in $100 millions')
+# 	ax.set(ylim=(0, 450000000),
+# 		xlim=(data_clean.Release_Date.min(), data_clean.Release_Date.max()),
+# 		xlabel='Year',
+# 		ylabel='Budget in $100 millions')
 	
 
-# Challenge
-# Can you create a column in data_clean that has the decade of the movie release.
-# For example, a film released in 1992 or 1999 should have 1990 in the Decade column.
+# # Challenge
+# # Can you create a column in data_clean that has the decade of the movie release.
+# # For example, a film released in 1992 or 1999 should have 1990 in the Decade column.
 
-dt_index = pd.DatetimeIndex(data_clean.Release_Date)
-years = dt_index.year
+# dt_index = pd.DatetimeIndex(data_clean.Release_Date)
+# years = dt_index.year
