@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Flight Data</title>
+</head>
+<body>
+	<h1>Flight Information</h1>
+	<ul>
+		{% for flight in data['response'] %}
+		<h3>Flight {{ flight['flight_iata'] }}</h3>
+		<li>Latitude: {{ flight['lat'] }},  Longitude: {{ flight['lng'] }} </li>
+		<li>Altitude: {{ flight['alt'] }},  Speed: {{ flight['speed'] }} </li>
+		<li>Status: "{{ flight['status'] }}",  Destination: {{ flight['arr_iata']}} </li>
+
+		{% endfor %}
+	</ul>
+</body>
+</html>
